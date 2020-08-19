@@ -1,7 +1,6 @@
 import { Request, Response} from 'express';
 
 import db from '../database/connection';
-
 import convertHourToMinutes from '../utils/convertHourToMinutes';
 
 interface ScheduleItem {
@@ -90,6 +89,7 @@ export default class ClassesController {
 
       return response.status(201).send();
     } catch (err) {
+      console.log(err);
       await trx.rollback();
 
       return response.status(400).json({
